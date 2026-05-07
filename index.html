@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoneySaver</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-light">
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="logo">💰</span>
+      <span class="app-name">MoneySaver</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" class="nav-link active" data-page="dashboard">
+        <span class="nav-icon">📊</span><span>Dashboard</span>
+      </a></li>
+      <li><a href="#" class="nav-link" data-page="transactions">
+        <span class="nav-icon">💳</span><span>Transactions</span>
+      </a></li>
+      <li><a href="#" class="nav-link" data-page="settings">
+        <span class="nav-icon">⚙️</span><span>Settings</span>
+      </a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <button class="btn-icon" id="toggle-sidebar" title="Collapse sidebar">◀</button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Top bar -->
+    <header class="topbar">
+      <button class="btn-icon" id="open-sidebar">☰</button>
+      <h1 class="page-title" id="page-title">Dashboard</h1>
+      <div class="topbar-actions">
+        <button class="btn btn-primary" id="add-transaction-btn">+ Add Transaction</button>
+      </div>
+    </header>
+
+    <!-- Pages -->
+    <div class="page active" id="page-dashboard">
+      <!-- Summary Cards -->
+      <section class="summary-cards">
+        <div class="card card-balance">
+          <div class="card-label">Net Balance</div>
+          <div class="card-amount" id="summary-balance">$0.00</div>
+        </div>
+        <div class="card card-income">
+          <div class="card-label">Total Income</div>
+          <div class="card-amount" id="summary-income">$0.00</div>
+        </div>
+        <div class="card card-expense">
+          <div class="card-label">Total Expenses</div>
+          <div class="card-amount" id="summary-expense">$0.00</div>
+        </div>
+      </section>
+
+      <!-- Recent Transactions -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Recent Transactions</h2>
+          <a href="#" class="nav-link link-inline" data-page="transactions">View all →</a>
+        </div>
+        <div id="recent-list" class="transaction-list">
+          <div class="empty-state">No transactions yet. Add your first one!</div>
+        </div>
+      </section>
+
+      <!-- Monthly Chart (simple bar chart) -->
+      <section class="section">
+        <h2>Monthly Overview</h2>
+        <div id="chart-container" class="chart-container">
+          <canvas id="monthly-chart"></canvas>
+        </div>
+      </section>
+    </div>
+
+    <div class="page" id="page-transactions">
+      <section class="section">
+        <div class="section-header">
+          <h2>All Transactions</h2>
+          <div class="filter-bar">
+            <select id="filter-type" class="input-control">
+              <option value="all">All Types</option>
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+            </select>
+            <select id="filter-category" class="input-control">
+              <option value="all">All Categories</option>
+            </select>
+            <input type="month" id="filter-month" class="input-control" />
+          </div>
+        </div>
+        <div id="all-transactions-list" class="transaction-list">
+          <div class="empty-state">No transactions found.</div>
+        </div>
+      </section>
+    </div>
+
+    <div class="page" id="page-settings">
+      <section class="section">
+        <h2>Settings</h2>
+
+        <div class="settings-group">
+          <h3>Appearance</h3>
+          <div class="setting-row">
+            <label for="theme-select">Theme</label>
+            <select id="theme-select" class="input-control">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+              <option value="green">Green</option>
+              <option value="blue">Blue</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <h3>Currency</h3>
+          <div class="setting-row">
+            <label for="currency-select">Currency Symbol</label>
+            <select id="currency-select" class="input-control">
+              <option value="$">$ — US Dollar</option>
+              <option value="€">€ — Euro</option>
+              <option value="£">£ — British Pound</option>
+              <option value="¥">¥ — Japanese Yen</option>
+              <option value="₹">₹ — Indian Rupee</option>
+              <option value="₩">₩ — Korean Won</option>
+              <option value="R$">R$ — Brazilian Real</option>
+              <option value="C$">C$ — Canadian Dollar</option>
+              <option value="A$">A$ — Australian Dollar</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <h3>Categories</h3>
+          <div class="setting-row">
+            <label>Income Categories</label>
+          </div>
+          <div id="income-categories-list" class="categories-list"></div>
+          <div class="add-category-row">
+            <input type="text" id="new-income-category" class="input-control" placeholder="New income category" />
+            <button class="btn btn-secondary" id="add-income-category-btn">Add</button>
+          </div>
+
+          <div class="setting-row" style="margin-top:1.5rem;">
+            <label>Expense Categories</label>
+          </div>
+          <div id="expense-categories-list" class="categories-list"></div>
+          <div class="add-category-row">
+            <input type="text" id="new-expense-category" class="input-control" placeholder="New expense category" />
+            <button class="btn btn-secondary" id="add-expense-category-btn">Add</button>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <h3>Data</h3>
+          <div class="setting-row">
+            <button class="btn btn-secondary" id="export-btn">Export CSV</button>
+            <button class="btn btn-danger" id="clear-data-btn">Clear All Data</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Add / Edit Transaction Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modal-title">Add Transaction</h2>
+        <button class="btn-icon" id="modal-close">✕</button>
+      </div>
+      <form id="transaction-form" class="modal-body">
+        <div class="form-group">
+          <label>Type</label>
+          <div class="toggle-group">
+            <button type="button" class="toggle-btn active" data-value="income" id="type-income">Income</button>
+            <button type="button" class="toggle-btn" data-value="expense" id="type-expense">Expense</button>
+          </div>
+          <input type="hidden" id="form-type" value="income" />
+        </div>
+        <div class="form-group">
+          <label for="form-amount">Amount</label>
+          <input type="number" id="form-amount" class="input-control" min="0.01" step="0.01" placeholder="0.00" required />
+        </div>
+        <div class="form-group">
+          <label for="form-category">Category</label>
+          <select id="form-category" class="input-control" required></select>
+        </div>
+        <div class="form-group">
+          <label for="form-description">Description</label>
+          <input type="text" id="form-description" class="input-control" placeholder="Optional note" />
+        </div>
+        <div class="form-group">
+          <label for="form-date">Date</label>
+          <input type="date" id="form-date" class="input-control" required />
+        </div>
+        <input type="hidden" id="form-edit-id" value="" />
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="modal-cancel">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="modal-submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Confirm Modal (reusable) -->
+  <div class="modal-overlay" id="confirm-overlay">
+    <div class="modal modal-sm">
+      <div class="modal-header">
+        <h2 id="confirm-title">Confirm</h2>
+        <button class="btn-icon" id="confirm-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <p id="confirm-message">Are you sure?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="confirm-cancel">Cancel</button>
+        <button class="btn btn-danger" id="confirm-ok">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
