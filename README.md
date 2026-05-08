@@ -11,12 +11,6 @@ Whether you want to monitor daily spending, organize your savings, or maintain f
 - 📊 **Expense & Income Tracking**  
   Easily record and categorize your transactions.
 
-- 💰 **Budget Management**  
-  Set budgets and keep your spending under control.
-
-- 📈 **Statistics & Charts**  
-  Visualize your financial habits with detailed analytics.
-
 - 🔒 **Secure Local Data Storage**  
   Your data stays stored locally for better privacy and security.
 
@@ -56,7 +50,7 @@ Optimized for performance, simplicity, and responsiveness.
 
 Download the latest release here:
 
-👉 [MoneySaver Releases](https://github.com/ZeRy0X/MoneySaver-Release/releases)
+[MoneySaver Releases](https://github.com/ZeRy0X/MoneySaver-Release/releases)
 
 ---
 
