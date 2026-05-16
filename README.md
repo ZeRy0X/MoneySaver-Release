@@ -15,7 +15,7 @@ Whether you want to monitor daily spending, organize your savings, or maintain f
   Your data stays stored locally for better privacy and security.
 
 - 📈 **Monthly and Yearly Overview**
-- Check your global income and expenses.
+  Check your global income and expenses.
 
 - ⚡ **Fast & User-Friendly Interface**  
   Smooth experience designed for everyday use.
