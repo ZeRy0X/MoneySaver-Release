@@ -12,10 +12,13 @@ Whether you want to monitor daily spending, organize your savings, or maintain f
   Easily record and categorize your transactions.
 
 - 🔒 **Secure Local Data Storage**  
-  Your data stays stored locally for better privacy and security.
+  Your data stays stored locally and is encrypted for better privacy and security. (Encryption is not active by default)
 
 - 📈 **Monthly and Yearly Overview**  
   Check your global income and expenses.
+
+- 🐷 **Smart Piggy Banks**  
+  Create custom piggy banks to save money for your goals and keep track of your progress easily.
 
 - ⚡ **Fast & User-Friendly Interface**  
   Smooth experience designed for everyday use.
