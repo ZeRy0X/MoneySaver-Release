@@ -26,6 +26,9 @@ Whether you want to monitor daily spending, organize your savings, or maintain f
 - 🌙 **Modern & Clean UI**  
   Elegant design with a focus on usability.
 
+- ⬇️ **Import from CSV or Excel files**  
+  You can import from CSV or Excel files easily
+  
 ---
 
 ## 🚀 Why MoneySaver?
